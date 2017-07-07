@@ -1,7 +1,7 @@
 module EntitySnapshot
   class EventStore
     include Log::Dependency
-    include EntityCache::Storage::Persistent
+    include EntityCache::Store::Persistent
 
     dependency :write, MessageStore::EventStore::Write
     dependency :read, MessageStore::EventStore::Get::Last
@@ -71,5 +71,7 @@ module EntitySnapshot
 
       return entity, version, time
     end
+
+    Error = Class.new(RuntimeError)
   end
 end
