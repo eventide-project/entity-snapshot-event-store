@@ -1,7 +1,7 @@
 module EntitySnapshot
   class EventStore
     include Log::Dependency
-    include EntityCache::Store::Persistent
+    include EntityCache::Store::External
 
     dependency :write, MessageStore::EventStore::Write
     dependency :read, MessageStore::EventStore::Get::Last
