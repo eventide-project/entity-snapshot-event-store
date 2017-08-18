@@ -17,7 +17,9 @@ context "Put" do
 
   context "Written Entity Snapshot Message" do
     test "Recorded data is the entity data" do
-      assert(read_message.data[:entity_data] == entity.attributes.to_h)
+      control_data = Controls::Entity::Data.example(entity.some_attribute)
+
+      assert(read_message.data[:entity_data] == control_data)
     end
   end
 end
